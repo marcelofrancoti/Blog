@@ -157,7 +157,7 @@ Facilitar Evoluções: Gerenciar alterações no banco com segurança e rastreab
 
 ![image](https://github.com/user-attachments/assets/249fc473-befb-4eb4-8936-cb640af9fe58)
 
-11. Conclusão
+*10. Conclusão
 Este sistema foi projetado com foco em desacoplamento, manutenção facilitada e escalabilidade. O uso do MediatR e da BaseController promove uma arquitetura limpa, enquanto as notificações em tempo real com SignalR oferecem uma experiência moderna aos usuários. O código é extensível, e as práticas adotadas garantem um sistema robusto e organizado.
 
 
