@@ -406,3 +406,12 @@ MigrationBackup/
 FodyWeavers.xsd
 /coveragereport
 
+# Ignorar arquivos de build
+bin/
+obj/
+
+# Ignorar arquivos temporários
+*.dll
+*.pdb
+*.cache
+*.exe
