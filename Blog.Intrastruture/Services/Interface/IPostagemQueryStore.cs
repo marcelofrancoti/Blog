@@ -10,5 +10,6 @@ namespace Blog.Intrastruture.Services.Interface
     public interface IPostagemQueryStore
     {
         Task<List<PostagemDto>> ObterPostagensAsync(string? titulo, string? autor);
+        Task<PostagemDto> ObterPostagemPorIdAsync(int IdPostagem);
     }
 }

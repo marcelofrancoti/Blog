@@ -38,6 +38,32 @@
   },
   {
     "ContainingType": "Blog.API.Controllers.PostagemController",
+    "Method": "EditarPostagem",
+    "RelativePath": "api/v1/Postagem",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idPostagem",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "idUsuario",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "request",
+        "Type": "Blog.Aplication.Postagens.Request.EditarPostagemRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Blog.API.Controllers.PostagemController",
     "Method": "ExcluirPostagem",
     "RelativePath": "api/v1/Postagem",
     "HttpMethod": "DELETE",
@@ -53,27 +79,6 @@
         "Name": "idUsuario",
         "Type": "System.Int32",
         "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Blog.API.Controllers.PostagemController",
-    "Method": "EditarPostagem",
-    "RelativePath": "api/v1/Postagem/{id}",
-    "HttpMethod": "PATCH",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "request",
-        "Type": "Blog.Aplication.Postagens.Request.EditarPostagemRequest",
-        "IsRequired": true
       }
     ],
     "ReturnTypes": []

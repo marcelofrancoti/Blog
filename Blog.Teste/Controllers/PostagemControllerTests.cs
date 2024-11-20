@@ -76,10 +76,11 @@ namespace Blog.Teste.Controllers
         {
             // Arrange
             var id = 0;
+            var idUsuario = 1;
             var request = new EditarPostagemRequest();
 
             // Act
-            var result = await _controller.EditarPostagem(id, request);
+            var result = await _controller.EditarPostagem(id,idUsuario, request);
 
             // Assert
             var badRequestResult = Assert.IsType<BadRequestObjectResult>(result);

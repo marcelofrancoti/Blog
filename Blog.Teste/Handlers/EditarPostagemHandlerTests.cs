@@ -1,21 +1,22 @@
 ﻿using Blog.Aplication.Postagens;
 using Blog.Aplication.Postagens.Interface;
 using Blog.Aplication.Postagens.Request;
-using Blog.Intrastruture.Services.EntitiesService.BaseEntity;
+using Blog.Intrastruture.Services.Interface;
 using Moq;
-using Xunit;
 
 namespace Blog.Teste.Handlers
 {
     public class EditarPostagemHandlerTests
     {
         private readonly Mock<IPostagemCommandStore> _commandStoreMock;
+        private readonly Mock<IPostagemQueryStore> _commandStor;
+        private readonly Mock<IUsuarioQueryStore> _usuarioQueryStor;
         private readonly EditarPostagemHandler _handler;
 
         public EditarPostagemHandlerTests()
         {
             _commandStoreMock = new Mock<IPostagemCommandStore>();
-            _handler = new EditarPostagemHandler(_commandStoreMock.Object);
+            _handler = new EditarPostagemHandler(_commandStoreMock.Object, _usuarioQueryStor.Object, _commandStor.Object);
         }
 
         [Fact]

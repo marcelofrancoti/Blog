@@ -34,15 +34,16 @@ namespace Blog.API.Controllers
             );
         }
 
-        [HttpPatch("{id}")]
-        public async Task<IActionResult> EditarPostagem(int id, [FromBody] EditarPostagemRequest request)
+        [HttpPatch]
+        public async Task<IActionResult> EditarPostagem(int idPostagem, int idUsuario, [FromBody] EditarPostagemRequest request)
         {
-            if (id <= 0)
+            if (idPostagem <= 0 && idUsuario <= 0)
             {
                 return BadRequest("ID da postagem é obrigatório.");
             }
 
-            request.IdPostagem = id;
+            request.IdPostagem = idPostagem;
+            request.IdUsuario = idUsuario;
 
             return await RequestService<EditarPostagemRequest, string>(
                 request,

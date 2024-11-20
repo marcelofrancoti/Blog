@@ -8,6 +8,8 @@ namespace Blog.Aplication.Postagens.Request
     {
         [JsonIgnore]
         public int IdPostagem { get; set; }
+        [JsonIgnore]
+        public int IdUsuario { get; set; }
         public string? Titulo { get; set; } // Permite alterar o título
         public string? Conteudo { get; set; } // Permite alterar o conteúdo
     }

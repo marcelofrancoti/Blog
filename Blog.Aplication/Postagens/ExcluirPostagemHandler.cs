@@ -12,11 +12,13 @@ namespace Blog.Aplication.Postagens
     {
         private readonly IUsuarioQueryStore _usuarioQueryStore;
         private readonly IPostagemCommandStore _commandStore;
+        private readonly IPostagemQueryStore _postagemQueryStore;
 
-        public ExcluirPostagemHandler(IPostagemCommandStore commandStore, IUsuarioQueryStore usuarioQueryStore)
+        public ExcluirPostagemHandler(IPostagemCommandStore commandStore, IUsuarioQueryStore usuarioQueryStore, IPostagemQueryStore postagemQueryStore)
         {
             _commandStore = commandStore;
             _usuarioQueryStore = usuarioQueryStore;
+            _postagemQueryStore = postagemQueryStore;
         }
 
         public async Task<Response<string>> Handle(ExcluirPostagemRequest request, CancellationToken cancellationToken)
@@ -25,6 +27,18 @@ namespace Blog.Aplication.Postagens
             if (!verificaUsuarioTemPermissao.TipoUsuario.Equals(TipoUsuario.adm))
             {
                 return new Response<string> { Success = false, Message = "Erro úsuario não tem permissão para excluir postagem." };
+            }
+
+            var validaSeOpostDoUsuario = await _postagemQueryStore.ObterPostagemPorIdAsync(request.IdPostagem);
+
+            if (validaSeOpostDoUsuario == null )
+            {
+                return new Response<string> { Success = false, Message = "Erro ao excluir postagem. Post Inesistente " };
+            }
+
+            if (validaSeOpostDoUsuario.IdPostagem != request.IdPostagem || validaSeOpostDoUsuario.IdUsuario != request.IdUsuario)
+            {
+                return new Response<string> { Success = false, Message = "Erro ao excluir postagem. Essa postagem não pertence a esse usuario" };
             }
 
             var success = await _commandStore.ExcluirPostagemAsync(request.IdPostagem);
