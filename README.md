@@ -2,7 +2,7 @@ Documentação do Sistema de Blog
 
 #Este documento detalha os conceitos, práticas e decisões de design utilizadas no desenvolvimento do sistema de blog, com foco especial nas controllers, arquitetura geral e uso de bibliotecas como o MediatR.
 
-1. Estrutura das Controllers
+*1. Estrutura das Controllers
 1.1 Uso da BaseController
 A criação de uma classe base chamada BaseController foi adotada com o objetivo de:
 
@@ -21,53 +21,6 @@ A BaseController usa o MediatR para simplificar a comunicação entre a camada d
 
 ![image](https://github.com/user-attachments/assets/5912ce00-c541-42b9-8154-ca7db1f7e82a)
 
-
-Documentação do Sistema de Blog
-Este documento detalha os conceitos, práticas e decisões de design utilizadas no desenvolvimento do sistema de blog, com foco especial nas controllers, arquitetura geral e uso de bibliotecas como o MediatR.
-
-1. Estrutura das Controllers
-1.1 Uso da BaseController
-A criação de uma classe base chamada BaseController foi adotada com o objetivo de:
-
-Evitar repetição de código:
-
-Muitas controllers possuem lógica repetitiva, como manipulação de respostas de APIs (Ok, BadRequest, etc.).
-A BaseController encapsula essa lógica para ser reutilizada.
-Uniformidade:
-
-As respostas das controllers seguem um padrão único, garantindo consistência no retorno das APIs.
-Fácil manutenção:
-
-Alterações na manipulação de respostas podem ser feitas apenas na BaseController, propagando automaticamente para todas as controllers que a herdam.
-Estrutura da BaseController
-A BaseController usa o MediatR para simplificar a comunicação entre a camada de apresentação (controllers) e as camadas de aplicação e infraestrutura.
-
-csharp
-Copiar código
-public abstract class BaseController : ControllerBase
-{
-    private readonly IMediator _mediator;
-
-    protected BaseController(IMediator mediator)
-    {
-        _mediator = mediator;
-    }
-
-    protected async Task<IActionResult> RequestService<TRequest, TResponse>(
-        TRequest request,
-        Func<Response<TResponse>, IActionResult> successResult,
-        Func<string, IActionResult> failureResult) where TRequest : IRequest<Response<TResponse>>
-    {
-        var result = await _mediator.Send(request);
-
-        if (result == null || !result.Success)
-        {
-            return failureResult(result?.Message ?? "Erro ao processar a requisição");
-        }
-
-        return successResult(result);
-    }
-}
 1.2 Benefícios do IMediator
 O MediatR é um padrão que ajuda a desacoplar as camadas do sistema, promovendo:
 
@@ -115,7 +68,7 @@ Ex.: PostagemCommandStore, UsuarioQueryStore.
 Banco de Dados:
 
 Usado para persistir e recuperar dados. Foi utilizado o Entity Framework com suporte a PostgreSQL.
-4. Testes
+*4. Testes
 4.1 Cobertura de Testes
 Foram desenvolvidos testes unitários para as principais partes do sistema:
 
@@ -125,7 +78,7 @@ Simulação de dependências com o uso do Moq.
 Stores:
 Testes diretos com um banco em memória (InMemoryDatabase).
 Garantia de que operações de criação, leitura, atualização e exclusão (CRUD) estão funcionando corretamente.
-5. Notificações em Tempo Real
+*5. Notificações em Tempo Real
 5.1 Uso do SignalR
 A biblioteca SignalR foi integrada ao sistema para enviar notificações em tempo real para os clientes. Isso foi implementado para informar os usuários sempre que uma nova postagem for criada.
 
@@ -135,3 +88,42 @@ Um hub chamado PostagemHub foi criado para gerenciar conexões de WebSocket.
 Uso nos Handlers:
 
 Exemplo: O handler InserirPostagemHandler envia uma mensagem ao hub quando uma postagem é criada.
+
+await _hubContext.Clients.All.SendAsync("NovaPostagem", $"Nova postagem criada: {postagem.Titulo}");
+
+
+*6. Padrões de Nomeação
+Handlers:
+
+Nomeados com base na ação executada. Ex.: InserirPostagemHandler.
+Requests e Responses:
+
+Nome das classes indica claramente o propósito. Ex.: CriarPostagemRequest, BuscarUsuariosRequest.
+Stores:
+
+Divididos em CommandStore (ações que alteram o estado) e QueryStore (ações de leitura).
+Ex.: PostagemCommandStore, UsuarioQueryStore.
+
+*7. Configuração do Servidor (API)
+Certifique-se de que o servidor está configurado corretamente para suportar o SignalR:
+
+Endpoint do SignalR:
+
+O endpoint do hub deve estar registrado no arquivo Program.cs:
+
+![image](https://github.com/user-attachments/assets/3d698b58-2784-488f-b05d-937e73136fa4)
+
+Isso garante que o SignalR escutará no caminho /hubs/postagem.
+
+Executar o Servidor:
+
+Compile e execute a aplicação (Blog.API) para iniciar o servidor. Certifique-se de que a API está funcionando corretamente no navegador.
+
+![image](https://github.com/user-attachments/assets/2b5b3326-eb0d-4e45-9f8f-cbb16a6c34ed)
+
+*8 
+
+11. Conclusão
+Este sistema foi projetado com foco em desacoplamento, manutenção facilitada e escalabilidade. O uso do MediatR e da BaseController promove uma arquitetura limpa, enquanto as notificações em tempo real com SignalR oferecem uma experiência moderna aos usuários. O código é extensível, e as práticas adotadas garantem um sistema robusto e organizado.
+
+
