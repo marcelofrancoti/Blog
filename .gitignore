@@ -415,3 +415,7 @@ obj/
 *.pdb
 *.cache
 *.exe
+
+# Ignorar pastas de build
+**/bin/
+**/obj/
