@@ -119,6 +119,20 @@ Executar o Servidor:
 
 Compile e execute a aplicação (Blog.API) para iniciar o servidor. Certifique-se de que a API está funcionando corretamente no navegador.
 
+*8 testar o WebSocket
+Abrir o HTML no Navegador:
+
+Salve o arquivo HTML em seu computador, por exemplo, como index.html.
+Abra o arquivo em um navegador.
+Iniciar o Servidor:
+
+Certifique-se de que a API está em execução e o SignalR configurado corretamente.
+Criar uma Postagem:
+Use o Swagger ou outra ferramenta para criar uma nova postagem na API. O handler responsável enviará uma mensagem ao hub SignalR.
+Verificar Notificações:
+
+A mensagem de nova postagem deve aparecer na lista da página HTML automaticamente.
+
 ![image](https://github.com/user-attachments/assets/2b5b3326-eb0d-4e45-9f8f-cbb16a6c34ed)
 
 *8 
