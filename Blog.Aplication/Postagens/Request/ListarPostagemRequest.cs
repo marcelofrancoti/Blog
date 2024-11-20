@@ -6,8 +6,10 @@ namespace Blog.Aplication.Postagens.Request
 {
     public class ListarPostagemRequest : IRequest<Response<List<PostagemDto>>>
     {
-        public string? Titulo { get; set; } 
-        public string? Autor { get; set; } 
+        public int IdPostagem { get; set; }
+        public int? IdUsuario { get;  set; }
+        public string? Titulo { get; set; }
+        public string? Autor { get; set; }
 
     }
 

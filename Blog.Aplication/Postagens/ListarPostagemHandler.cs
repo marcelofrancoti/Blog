@@ -19,7 +19,9 @@ namespace Blog.Aplication.Postagens
         {
             var postagens = await _queryStore.ObterPostagensAsync(
                 request.Titulo,
-                request.Autor);
+                request.Autor,
+                request.IdPostagem,
+                request.IdUsuario);
 
             return new Response<List<PostagemDto>>
             {

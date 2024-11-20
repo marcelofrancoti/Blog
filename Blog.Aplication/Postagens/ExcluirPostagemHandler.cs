@@ -1,10 +1,13 @@
-﻿using Blog.Aplication.Postagens.Interface;
+﻿using Blog.API.Hubs;
+using Blog.Aplication.Postagens.Interface;
 using Blog.Aplication.Postagens.Request;
 using Blog.Contracts.Enum;
+using Blog.Domain.Entities;
 using Blog.Intrastruture.Services.EntitiesService.BaseEntity;
 using Blog.Intrastruture.Services.IntegrationService;
 using Blog.Intrastruture.Services.Interface;
 using MediatR;
+using Microsoft.AspNetCore.SignalR;
 
 namespace Blog.Aplication.Postagens
 {
@@ -13,12 +16,13 @@ namespace Blog.Aplication.Postagens
         private readonly IUsuarioQueryStore _usuarioQueryStore;
         private readonly IPostagemCommandStore _commandStore;
         private readonly IPostagemQueryStore _postagemQueryStore;
-
-        public ExcluirPostagemHandler(IPostagemCommandStore commandStore, IUsuarioQueryStore usuarioQueryStore, IPostagemQueryStore postagemQueryStore)
+        private readonly IHubContext<PostagemHub> _hubContext;
+        public ExcluirPostagemHandler(IPostagemCommandStore commandStore, IUsuarioQueryStore usuarioQueryStore, IPostagemQueryStore postagemQueryStore, IHubContext<PostagemHub> hubContext)
         {
             _commandStore = commandStore;
             _usuarioQueryStore = usuarioQueryStore;
             _postagemQueryStore = postagemQueryStore;
+            _hubContext = hubContext;
         }
 
         public async Task<Response<string>> Handle(ExcluirPostagemRequest request, CancellationToken cancellationToken)
@@ -42,7 +46,9 @@ namespace Blog.Aplication.Postagens
             }
 
             var success = await _commandStore.ExcluirPostagemAsync(request.IdPostagem);
-
+   
+            await _hubContext.Clients.All.SendAsync("ExcluindoPostagem", $"Postagem excluida: {validaSeOpostDoUsuario.Titulo}");
+            
             return success
                 ? new Response<string> { Success = true, Message = "Postagem excluída com sucesso." }
                 : new Response<string> { Success = false, Message = "Erro ao excluir postagem." };

@@ -1,10 +1,13 @@
-﻿using Blog.Aplication.Postagens;
+﻿using Blog.API.Hubs;
+using Blog.Aplication.Postagens;
 using Blog.Aplication.Postagens.Interface;
 using Blog.Aplication.Postagens.Request;
 using Blog.Contracts.Dto;
 using Blog.Contracts.Enum;
 using Blog.Intrastruture.Services.EntitiesService.BaseEntity;
+using Blog.Intrastruture.Services.IntegrationService;
 using Blog.Intrastruture.Services.Interface;
+using Microsoft.AspNetCore.SignalR;
 using Moq;
 using Xunit;
 
@@ -14,13 +17,19 @@ namespace Blog.Teste.Handlers
     {
         private readonly Mock<IUsuarioQueryStore> _usuarioQueryStoreMock;
         private readonly Mock<IPostagemCommandStore> _postagemCommandStoreMock;
+        private readonly Mock<IPostagemQueryStore> _postagemQueryStoreMock;
         private readonly ExcluirPostagemHandler _handler;
+        private readonly Mock<IHubClients> _hubClientsMock;
+        private readonly Mock<IHubContext<PostagemHub>> _hubContextMock;
 
         public ExcluirPostagemHandlerTests()
         {
+            _hubContextMock = new Mock<IHubContext<PostagemHub>>();
+            _hubClientsMock = new Mock<IHubClients>();
+
             _usuarioQueryStoreMock = new Mock<IUsuarioQueryStore>();
             _postagemCommandStoreMock = new Mock<IPostagemCommandStore>();
-            _handler = new ExcluirPostagemHandler(_postagemCommandStoreMock.Object, _usuarioQueryStoreMock.Object);
+            _handler = new ExcluirPostagemHandler(_postagemCommandStoreMock.Object, _usuarioQueryStoreMock.Object, _postagemQueryStoreMock.Object, _hubContextMock.Object);
         }
 
         [Fact]
@@ -45,7 +54,7 @@ namespace Blog.Teste.Handlers
         public async Task Handle_DeveRetornarErroQuandoExclusaoFalha()
         {
             // Arrange
-            var request = new ExcluirPostagemRequest( 1, 123);
+            var request = new ExcluirPostagemRequest(1, 123);
 
             _usuarioQueryStoreMock
                 .Setup(u => u.ObterUsuarioPorIdAsync(request.IdUsuario))
