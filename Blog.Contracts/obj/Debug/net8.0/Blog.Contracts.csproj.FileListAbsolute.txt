@@ -1,0 +1,11 @@
+C:\Users\redbu\source\repos\Blog\Blog.Contracts\bin\Debug\net8.0\Blog.Contracts.deps.json
+C:\Users\redbu\source\repos\Blog\Blog.Contracts\bin\Debug\net8.0\Blog.Contracts.dll
+C:\Users\redbu\source\repos\Blog\Blog.Contracts\bin\Debug\net8.0\Blog.Contracts.pdb
+C:\Users\redbu\source\repos\Blog\Blog.Contracts\obj\Debug\net8.0\Blog.Contracts.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\redbu\source\repos\Blog\Blog.Contracts\obj\Debug\net8.0\Blog.Contracts.AssemblyInfoInputs.cache
+C:\Users\redbu\source\repos\Blog\Blog.Contracts\obj\Debug\net8.0\Blog.Contracts.AssemblyInfo.cs
+C:\Users\redbu\source\repos\Blog\Blog.Contracts\obj\Debug\net8.0\Blog.Contracts.csproj.CoreCompileInputs.cache
+C:\Users\redbu\source\repos\Blog\Blog.Contracts\obj\Debug\net8.0\Blog.Contracts.dll
+C:\Users\redbu\source\repos\Blog\Blog.Contracts\obj\Debug\net8.0\refint\Blog.Contracts.dll
+C:\Users\redbu\source\repos\Blog\Blog.Contracts\obj\Debug\net8.0\Blog.Contracts.pdb
+C:\Users\redbu\source\repos\Blog\Blog.Contracts\obj\Debug\net8.0\ref\Blog.Contracts.dll

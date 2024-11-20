@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
+    <title>Teste de WebSocket</title>
+</head>
+<body>
+    <h1>Teste de Notificações de Postagens</h1>
+    <ul id="mensagens"></ul>
+
+    <script>
+        // Configurar a conexão com o SignalR Hub
+        const connection = new signalR.HubConnectionBuilder()
+            .withUrl("/hubs/postagem") // URL do seu hub
+            .build();
+
+        // Quando uma nova postagem for notificada, adiciona à lista
+        connection.on("NovaPostagem", function (mensagem) {
+            const li = document.createElement("li");
+            li.textContent = mensagem;
+            document.getElementById("mensagens").appendChild(li);
+        });
+
+        // Iniciar a conexão com o WebSocket
+        connection.start()
+            .then(() => console.log("Conexão estabelecida com sucesso!"))
+            .catch(err => console.error("Erro ao conectar:", err));
+    </script>
+</body>
+</html>

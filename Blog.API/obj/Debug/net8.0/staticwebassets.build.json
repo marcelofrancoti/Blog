@@ -1,0 +1,39 @@
+{
+  "Version": 1,
+  "Hash": "rzZKL8iO2InHqsYHCDK0Ye14qkwxmFPyVF1feDLXUzY=",
+  "Source": "Blog.API",
+  "BasePath": "_content/Blog.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "Blog.API\\wwwroot",
+      "Source": "Blog.API",
+      "ContentRoot": "C:\\Users\\redbu\\source\\repos\\Blog\\Blog.API\\wwwroot\\",
+      "BasePath": "_content/Blog.API",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\redbu\\source\\repos\\Blog\\Blog.API\\wwwroot\\index.html",
+      "SourceId": "Blog.API",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\redbu\\source\\repos\\Blog\\Blog.API\\wwwroot\\",
+      "BasePath": "_content/Blog.API",
+      "RelativePath": "index.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\index.html"
+    }
+  ]
+}

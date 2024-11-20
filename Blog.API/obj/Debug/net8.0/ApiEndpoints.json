@@ -1,0 +1,203 @@
+[
+  {
+    "ContainingType": "Blog.API.Controllers.PostagemController",
+    "Method": "ListarPostagens",
+    "RelativePath": "api/v1/Postagem",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Titulo",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Autor",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Blog.API.Controllers.PostagemController",
+    "Method": "CriarPostagem",
+    "RelativePath": "api/v1/Postagem",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Blog.Intrastruture.Services.EntitiesService.CriarPostagemRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Blog.API.Controllers.PostagemController",
+    "Method": "ExcluirPostagem",
+    "RelativePath": "api/v1/Postagem",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idPostagem",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "idUsuario",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Blog.API.Controllers.PostagemController",
+    "Method": "EditarPostagem",
+    "RelativePath": "api/v1/Postagem/{id}",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "request",
+        "Type": "Blog.Aplication.Postagens.Request.EditarPostagemRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Blog.API.Controllers.PostagemController",
+    "Method": "AtivarPostagem",
+    "RelativePath": "api/v1/Postagem/AtivarPostagem",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Blog.Aplication.Postagens.Request.AtivarPostagemRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Blog.API.Controllers.UsuarioController",
+    "Method": "BuscarUsuarios",
+    "RelativePath": "api/v1/Usuario",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Nome",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Login",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Blog.API.Controllers.UsuarioController",
+    "Method": "CriarUsuario",
+    "RelativePath": "api/v1/Usuario",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Blog.Aplication.Usuario.Request.CriarUsuarioRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Blog.API.Controllers.UsuarioController",
+    "Method": "InativarUsuario",
+    "RelativePath": "api/v1/Usuario",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Blog.API.Controllers.UsuarioController",
+    "Method": "BuscarUsuarioPorId",
+    "RelativePath": "api/v1/Usuario/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Blog.API.Controllers.UsuarioController",
+    "Method": "AlterarSenha",
+    "RelativePath": "api/v1/Usuario/{id}/alterar-senha",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "request",
+        "Type": "Blog.Aplication.Usuario.Request.AlterarSenhaRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Blog.API.Controllers.UsuarioController",
+    "Method": "AutenticarUsuario",
+    "RelativePath": "api/v1/Usuario/autenticar",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Blog.Aplication.Usuario.Request.AutenticarUsuarioRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]
