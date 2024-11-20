@@ -143,7 +143,7 @@ Manutenção Simplificada: Com o EF, as mudanças no modelo de dados são reflet
 Integração com LINQ: A facilidade de usar LINQ para manipular dados torna o desenvolvimento mais produtivo e legível.
 
 
-*10. Migrations:
+*9.1. Migrations:
 
 Gerenciamento de Alterações: As migrations documentam e aplicam alterações no banco de dados ao longo do tempo, garantindo a consistência entre o modelo de dados e o esquema do banco.
 Automação: Gera scripts SQL automaticamente com base nas alterações feitas no modelo, reduzindo erros manuais.
