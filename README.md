@@ -135,7 +135,27 @@ A mensagem de nova postagem deve aparecer na lista da página HTML automaticamen
 
 ![image](https://github.com/user-attachments/assets/2b5b3326-eb0d-4e45-9f8f-cbb16a6c34ed)
 
-*8 
+*9. Por que usar Entity Framework e Migrations?
+Entity Framework (EF):
+
+Abstração do Banco de Dados: O EF permite trabalhar com bancos de dados usando classes C# (Code-First), eliminando a necessidade de escrever consultas SQL complexas diretamente.
+Manutenção Simplificada: Com o EF, as mudanças no modelo de dados são refletidas automaticamente no banco de dados, simplificando ajustes e evoluções no sistema.
+Integração com LINQ: A facilidade de usar LINQ para manipular dados torna o desenvolvimento mais produtivo e legível.
+
+
+*10. Migrations:
+
+Gerenciamento de Alterações: As migrations documentam e aplicam alterações no banco de dados ao longo do tempo, garantindo a consistência entre o modelo de dados e o esquema do banco.
+Automação: Gera scripts SQL automaticamente com base nas alterações feitas no modelo, reduzindo erros manuais.
+Versões do Banco de Dados: Permite rastrear e reverter mudanças, útil para ambientes de desenvolvimento, teste e produção.
+Resumo
+Entity Framework e Migrations foram usados para:
+
+Reduzir Complexidade: Abstrair as interações com o banco de dados.
+Manter Consistência: Sincronizar o modelo de dados do sistema com o banco de dados.
+Facilitar Evoluções: Gerenciar alterações no banco com segurança e rastreabilidade.
+
+![image](https://github.com/user-attachments/assets/249fc473-befb-4eb4-8936-cb640af9fe58)
 
 11. Conclusão
 Este sistema foi projetado com foco em desacoplamento, manutenção facilitada e escalabilidade. O uso do MediatR e da BaseController promove uma arquitetura limpa, enquanto as notificações em tempo real com SignalR oferecem uma experiência moderna aos usuários. O código é extensível, e as práticas adotadas garantem um sistema robusto e organizado.
