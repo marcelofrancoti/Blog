@@ -33,8 +33,11 @@ Alterações na lógica de negócios podem ser feitas nos handlers, sem impactar
 Organização:
 
 As responsabilidades são bem divididas, com cada handler focado em uma operação específica.
+
 2. Fluxo de Requisições
+
 2.1 Exemplo de Fluxo
+
 Ao fazer uma solicitação de criação de postagem na controller, o seguinte fluxo ocorre:
 
 Controller recebe o request:
