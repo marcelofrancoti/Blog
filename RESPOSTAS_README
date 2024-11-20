@@ -1,0 +1,22 @@
+### **1. Orientação a Objetos**
+- Herança múltipla em "C#": Não é suportada para evitar confusão. Usamos **interfaces** para alcançar comportamentos semelhantes.
+- Polimorfismo: Permite que métodos tenham comportamentos diferentes com base no tipo de objeto.  
+  Exemplo: Uma classe base "Animal" com um método "Falar()" que é sobrescrito em classes derivadas como "Cachorro" e "Gato".
+
+### **2. SOLID**
+- SRP ("Responsabilidade Única"): Cada classe faz apenas **uma coisa**. Facilita manutenção e leitura.
+- DIP ("Inversão de Dependência"): Dependa de **interfaces**, não de implementações. Isso deixa o código mais flexível e fácil de testar, como fiz na minha aplicação
+
+### **3. Entity Framework**
+- Mapeamento: O EF conecta classes do "C#" às tabelas do banco de dados usando convenções ou configurações (Fluent API ou Data Annotations) Ajuda na utilização com migration.
+- Otimização: Use `Include` para carregar dados relacionados, e **projeções com Select** para evitar trazer dados desnecessários.
+
+### **4. WebSockets**
+- O que são: Permitem comunicação "em tempo real" entre cliente e servidor, mantendo a conexão aberta. Ideal para chats e notificações.
+- Segurança: Use TLS, valide dados e implemente autenticação/limites de mensagens.
+
+### **5. Arquitetura**
+- Monolítica: Tudo em um só projeto. Fácil no início, mas difícil de escalar.
+- Microsserviços: Dividido em serviços independentes. Ideal para escalabilidade e equipes separadas, mas mais complexo.
+
+Minha escolha e opinião: Monolítica para sistemas simples; Microsserviços para sistemas escaláveis.
