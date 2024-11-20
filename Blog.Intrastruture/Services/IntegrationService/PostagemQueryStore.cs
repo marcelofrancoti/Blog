@@ -52,6 +52,7 @@ namespace Blog.Intrastruture.Services.IntegrationService
                     Titulo = p.Titulo,
                     Conteudo = p.Conteudo,
                     Autor = p.Autor,
+                    IdUsuario = p.IdUsuario,
                     DataRegistro = p.DataRegistro.Value,
                 })
                 .ToListAsync();

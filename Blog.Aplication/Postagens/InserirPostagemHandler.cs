@@ -49,6 +49,7 @@ namespace Blog.Aplication.Postagens
                 Titulo = request.Titulo,
                 Conteudo = request.Conteudo,
                 Autor = autenticaUsuario.Nome, 
+                IdUsuario = request.IdUsuario,
                 DataRegistro = DateTime.UtcNow
             };
 
