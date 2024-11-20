@@ -71,7 +71,9 @@ Ex.: PostagemCommandStore, UsuarioQueryStore.
 Banco de Dados:
 
 Usado para persistir e recuperar dados. Foi utilizado o Entity Framework com suporte a PostgreSQL.
+
 *4. Testes
+
 4.1 Cobertura de Testes
 Foram desenvolvidos testes unitários para as principais partes do sistema:
 
