@@ -1,5 +1,6 @@
 Documentação do Sistema de Blog
-Este documento detalha os conceitos, práticas e decisões de design utilizadas no desenvolvimento do sistema de blog, com foco especial nas controllers, arquitetura geral e uso de bibliotecas como o MediatR.
+
+#Este documento detalha os conceitos, práticas e decisões de design utilizadas no desenvolvimento do sistema de blog, com foco especial nas controllers, arquitetura geral e uso de bibliotecas como o MediatR.
 
 1. Estrutura das Controllers
 1.1 Uso da BaseController
