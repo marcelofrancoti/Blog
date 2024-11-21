@@ -10,10 +10,7 @@ using System.Reflection;
 var builder = WebApplication.CreateBuilder(args);
 
 ConfigureServices(builder.Services, builder.Configuration);
-//builder.Services.AddScoped<IUsuarioCommandStore, UsuarioCommandStore>();
-//builder.Services.AddScoped<IUsuarioQueryStore, UsuarioQueryStore>();
-//builder.Services.AddScoped<IPostagemCommandStore, PostagemCommandStore>();
-//builder.Services.AddScoped<IPostagemQueryStore, PostagemQueryStore>();
+
 builder.Services.AddApplicationServices();
 
 var app = builder.Build();
