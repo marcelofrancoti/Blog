@@ -420,3 +420,6 @@ obj/
 **/bin/
 **/obj/
 **/obj/Debug/net8.0/apphost.exe
+# Ignorar arquivos gerados em Debug/net8.0
+**/obj/Debug/net8.0/apphost.exe
+**/obj/Debug/net8.0/*.cache
