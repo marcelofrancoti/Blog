@@ -73,6 +73,7 @@ Banco de Dados:
 Usado para persistir e recuperar dados. Foi utilizado o Entity Framework com suporte a PostgreSQL.
 
 *4. Testes
+![image](https://github.com/user-attachments/assets/8dcb748b-3a9a-4d6f-9d79-c874146069cb)
 
 4.1 Cobertura de Testes
 Foram desenvolvidos testes unitários para as principais partes do sistema:
