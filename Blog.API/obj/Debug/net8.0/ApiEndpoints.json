@@ -180,6 +180,27 @@
   },
   {
     "ContainingType": "Blog.API.Controllers.UsuarioController",
+    "Method": "AlterarDados",
+    "RelativePath": "api/v1/Usuario/{id}",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "request",
+        "Type": "Blog.Aplication.Usuario.Request.AlterarUsuarioRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Blog.API.Controllers.UsuarioController",
     "Method": "AlterarSenha",
     "RelativePath": "api/v1/Usuario/{id}/alterar-senha",
     "HttpMethod": "PATCH",

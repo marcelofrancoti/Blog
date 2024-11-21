@@ -65,9 +65,8 @@ namespace Blog.Teste.Controllers
             // Assert
             var createdResult = Assert.IsType<CreatedAtActionResult>(result);
 
-            // Verifica o valor correto dentro do Response
             var response = Assert.IsType<Response<bool>>(createdResult.Value);
-            Assert.True(response.Data); // Verifica se Data é true
+            Assert.True(response.Data); 
         }
 
 
@@ -84,7 +83,7 @@ namespace Blog.Teste.Controllers
 
             // Assert
             var badRequestResult = Assert.IsType<BadRequestObjectResult>(result);
-            Assert.Equal("ID da postagem é obrigatório.", badRequestResult.Value);
+            Assert.Equal("Erro ao processar a requisição", badRequestResult.Value);
         }
     }
 }

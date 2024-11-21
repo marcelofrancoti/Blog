@@ -41,7 +41,7 @@ namespace Blog.Teste.Handlers
 
             _queryStoreMock
                 .Setup(q => q.ObterUsuarioPorIdAsync(It.IsAny<int>()))
-                .ReturnsAsync((UsuarioDto?)null); // Simula a ausência de um usuário
+                .ReturnsAsync((UsuarioDto?)null); 
 
             // Act
             var result = await _handler.Handle(request, CancellationToken.None);
@@ -81,7 +81,7 @@ namespace Blog.Teste.Handlers
 
             _commandStoreMock
                 .Setup(c => c.InserirPostagemAsync(It.IsAny<Postagem>()))
-                .ReturnsAsync(0); // Simula falha ao criar postagem
+                .ReturnsAsync(0); 
 
             // Act
             var result = await _handler.Handle(request, CancellationToken.None);
@@ -103,7 +103,7 @@ namespace Blog.Teste.Handlers
 
             _commandStoreMock
                 .Setup(c => c.InserirPostagemAsync(It.IsAny<Postagem>()))
-                .ReturnsAsync(1); // Simula sucesso ao criar postagem
+                .ReturnsAsync(1); 
 
             // Act
             var result = await _handler.Handle(request, CancellationToken.None);
@@ -114,7 +114,7 @@ namespace Blog.Teste.Handlers
 
             _clientProxyMock.Verify(
                 c => c.SendCoreAsync("NovaPostagem", It.Is<object[]>(o => o[0].ToString() == "Nova postagem criada: Teste"), default),
-                Times.Once // Verifica que o SignalR foi chamado uma vez
+                Times.Once 
             );
         }
     }

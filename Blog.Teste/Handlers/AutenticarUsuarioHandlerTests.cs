@@ -1,10 +1,8 @@
 ﻿using Blog.Aplication.Usuario;
 using Blog.Aplication.Usuario.Request;
 using Blog.Contracts.Dto;
-using Blog.Intrastruture.Services.EntitiesService.BaseEntity;
 using Blog.Intrastruture.Services.Interface;
 using Moq;
-using Xunit;
 
 namespace Blog.Teste.Handlers
 {
@@ -27,7 +25,7 @@ namespace Blog.Teste.Handlers
 
             _queryStoreMock
                 .Setup(q => q.AutenticarUsuarioAsync(request.Login, request.Senha))
-                .ReturnsAsync((UsuarioDto)null); // Simula usuário não encontrado
+                .ReturnsAsync((UsuarioDto)null); 
 
             // Act
             var result = await _handler.Handle(request, CancellationToken.None);
@@ -53,7 +51,7 @@ namespace Blog.Teste.Handlers
 
             _queryStoreMock
                 .Setup(q => q.AutenticarUsuarioAsync(request.Login, request.Senha))
-                .ReturnsAsync(usuarioDto); // Simula usuário encontrado
+                .ReturnsAsync(usuarioDto); 
 
             // Act
             var result = await _handler.Handle(request, CancellationToken.None);

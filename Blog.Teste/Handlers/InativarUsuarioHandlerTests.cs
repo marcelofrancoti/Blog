@@ -1,9 +1,7 @@
 ﻿using Blog.Aplication.Usuario;
 using Blog.Aplication.Usuario.Request;
-using Blog.Intrastruture.Services.EntitiesService.BaseEntity;
 using Blog.Intrastruture.Services.Interface;
 using Moq;
-using Xunit;
 
 namespace Blog.Teste.Handlers
 {
@@ -26,7 +24,7 @@ namespace Blog.Teste.Handlers
 
             _commandStoreMock
                 .Setup(c => c.InativarUsuarioAsync(request.IdUsuario))
-                .ReturnsAsync(false); // Simula falha na inativação
+                .ReturnsAsync(false); 
 
             // Act
             var result = await _handler.Handle(request, CancellationToken.None);
@@ -44,7 +42,7 @@ namespace Blog.Teste.Handlers
 
             _commandStoreMock
                 .Setup(c => c.InativarUsuarioAsync(request.IdUsuario))
-                .ReturnsAsync(true); // Simula sucesso na inativação
+                .ReturnsAsync(true); 
 
             // Act
             var result = await _handler.Handle(request, CancellationToken.None);

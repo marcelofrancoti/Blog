@@ -76,6 +76,23 @@ namespace Blog.API.Controllers
             );
         }
 
+
+        [HttpPatch("{id}")]
+        public async Task<IActionResult> AlterarDados(int id, [FromBody] AlterarUsuarioRequest request)
+        {
+            if (id <= 0)
+            {
+                return BadRequest("ID do usuário é obrigatório.");
+            }
+            request.IdUsuario = id;
+
+            return await RequestService<AlterarUsuarioRequest, string>(
+                request,
+                result => Ok(result.Data),
+                message => BadRequest(message)
+            );
+        }
+
         [HttpDelete]
         public async Task<IActionResult> InativarUsuario(int id)
         {

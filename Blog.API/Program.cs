@@ -1,9 +1,6 @@
 using Blog.API.Hubs;
 using Blog.API.Util;
 using Blog.Aplication.Postagens;
-using Blog.Aplication.Postagens.Interface;
-using Blog.Intrastruture.Services.IntegrationService;
-using Blog.Intrastruture.Services.Interface;
 using Blog.Migrations;
 using Microsoft.EntityFrameworkCore;
 using Npgsql;

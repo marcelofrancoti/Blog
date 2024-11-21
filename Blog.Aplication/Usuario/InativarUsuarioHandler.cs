@@ -1,6 +1,5 @@
 ﻿using MediatR;
 using Blog.Intrastruture.Services.EntitiesService.BaseEntity;
-using Blog.Intrastruture.Services.IntegrationService;
 using Blog.Aplication.Usuario.Request;
 using Blog.Intrastruture.Services.Interface;
 

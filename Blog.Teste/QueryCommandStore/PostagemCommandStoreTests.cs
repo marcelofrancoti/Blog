@@ -2,7 +2,6 @@
 using Blog.Intrastruture.Services.IntegrationService;
 using Blog.Migrations;
 using Microsoft.EntityFrameworkCore;
-using Xunit;
 
 namespace Blog.Teste.CommandStore
 {
@@ -72,7 +71,7 @@ namespace Blog.Teste.CommandStore
         public async Task ExcluirPostagemAsync_DeveRetornarFalseQuandoPostagemNaoExistir()
         {
             // Act
-            var result = await _store.ExcluirPostagemAsync(999); // ID inexistente
+            var result = await _store.ExcluirPostagemAsync(999);
 
             // Assert
             Assert.False(result);
@@ -108,7 +107,7 @@ namespace Blog.Teste.CommandStore
         public async Task EditarPostagemAsync_DeveRetornarFalseQuandoPostagemNaoExistir()
         {
             // Act
-            var result = await _store.EditarPostagemAsync(999, "Título Novo", "Conteúdo Novo"); // ID inexistente
+            var result = await _store.EditarPostagemAsync(999, "Título Novo", "Conteúdo Novo"); 
 
             // Assert
             Assert.False(result);
@@ -124,7 +123,7 @@ namespace Blog.Teste.CommandStore
                 Conteudo = "Conteúdo de Teste",
                 Autor = "Autor de Teste",
                 DataRegistro = DateTime.UtcNow,
-                DataExclusao = DateTime.UtcNow // Postagem inicialmente inativa
+                DataExclusao = DateTime.UtcNow 
             };
 
             _context.Postagens.Add(postagem);
@@ -143,7 +142,7 @@ namespace Blog.Teste.CommandStore
         public async Task AtivarPostagemAsync_DeveRetornarFalseQuandoPostagemNaoExistir()
         {
             // Act
-            var result = await _store.AtivarPostagemAsync(999); // ID inexistente
+            var result = await _store.AtivarPostagemAsync(999); 
 
             // Assert
             Assert.False(result);

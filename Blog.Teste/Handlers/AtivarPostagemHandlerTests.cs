@@ -51,7 +51,7 @@ namespace Blog.Teste.Handlers
 
             _postagemCommandStoreMock
                 .Setup(p => p.AtivarPostagemAsync(request.IdPostagem))
-                .ReturnsAsync(false); // Simula falha na ativação
+                .ReturnsAsync(false); 
 
             // Act
             var result = await _handler.Handle(request, CancellationToken.None);
@@ -73,7 +73,7 @@ namespace Blog.Teste.Handlers
 
             _postagemCommandStoreMock
                 .Setup(p => p.AtivarPostagemAsync(request.IdPostagem))
-                .ReturnsAsync(true); // Simula sucesso na ativação
+                .ReturnsAsync(true); 
 
             // Act
             var result = await _handler.Handle(request, CancellationToken.None);

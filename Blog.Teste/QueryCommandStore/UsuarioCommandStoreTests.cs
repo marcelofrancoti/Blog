@@ -2,7 +2,6 @@
 using Blog.Intrastruture.Services.IntegrationService;
 using Blog.Migrations;
 using Microsoft.EntityFrameworkCore;
-using Xunit;
 
 namespace Blog.Teste.CommandStore
 {
@@ -14,7 +13,7 @@ namespace Blog.Teste.CommandStore
         public UsuarioCommandStoreTests()
         {
             var options = new DbContextOptionsBuilder<BlogContext>()
-                .UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString()) // Banco em memória
+                .UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString()) 
                 .Options;
 
             _context = new BlogContext(options);
@@ -74,7 +73,7 @@ namespace Blog.Teste.CommandStore
         public async Task AlterarSenhaAsync_DeveRetornarFalseQuandoUsuarioNaoExistir()
         {
             // Act
-            var resultado = await _store.AlterarSenhaAsync(999, "novaSenha456"); // ID inexistente
+            var resultado = await _store.AlterarSenhaAsync(999, "novaSenha456"); 
 
             // Assert
             Assert.False(resultado);
@@ -109,7 +108,7 @@ namespace Blog.Teste.CommandStore
         public async Task InativarUsuarioAsync_DeveRetornarFalseQuandoUsuarioNaoExistir()
         {
             // Act
-            var resultado = await _store.InativarUsuarioAsync(999); // ID inexistente
+            var resultado = await _store.InativarUsuarioAsync(999); 
 
             // Assert
             Assert.False(resultado);

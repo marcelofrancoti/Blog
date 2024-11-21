@@ -1,9 +1,7 @@
 ﻿using Blog.Aplication.Usuario;
 using Blog.Aplication.Usuario.Request;
-using Blog.Intrastruture.Services.EntitiesService.BaseEntity;
 using Blog.Intrastruture.Services.Interface;
 using Moq;
-using Xunit;
 
 namespace Blog.Teste.Handlers
 {
@@ -28,7 +26,7 @@ namespace Blog.Teste.Handlers
 
             _commandStoreMock
                 .Setup(c => c.AlterarSenhaAsync(request.IdUsuario, request.NovaSenha))
-                .ReturnsAsync(true); // Simula sucesso ao alterar a senha
+                .ReturnsAsync(true);
 
             // Act
             var result = await _handler.Handle(request, CancellationToken.None);
@@ -46,7 +44,7 @@ namespace Blog.Teste.Handlers
 
             _commandStoreMock
                 .Setup(c => c.AlterarSenhaAsync(request.IdUsuario, request.NovaSenha))
-                .ReturnsAsync(false); // Simula falha ao alterar a senha
+                .ReturnsAsync(false); 
 
             // Act
             var result = await _handler.Handle(request, CancellationToken.None);

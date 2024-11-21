@@ -1,8 +1,6 @@
 ﻿using Blog.Intrastruture.Services.EntitiesService.BaseEntity;
-using Blog.Migrations;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.SignalR;
 
 namespace Blog.API.Controllers.ConfigureBase
 {

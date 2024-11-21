@@ -1,8 +1,6 @@
-﻿using Blog.Contracts.Dto;
-using Blog.Intrastruture.Services.IntegrationService;
+﻿using Blog.Intrastruture.Services.IntegrationService;
 using Blog.Migrations;
 using Microsoft.EntityFrameworkCore;
-using Xunit;
 
 namespace Blog.Teste.QueryStore
 {
@@ -14,7 +12,7 @@ namespace Blog.Teste.QueryStore
         public PostagemQueryStoreTests()
         {
             var options = new DbContextOptionsBuilder<BlogContext>()
-                .UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString()) // Banco em memória para cada teste
+                .UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString()) 
                 .Options;
 
             _context = new BlogContext(options);
@@ -34,18 +32,18 @@ namespace Blog.Teste.QueryStore
         public async Task ObterPostagensAsync_DeveRetornarTodasPostagensAtivas()
         {
             // Act
-            var result = await _store.ObterPostagensAsync(null, null);
+            var result = await _store.ObterPostagensAsync(null, null, null, null);
 
             // Assert
             Assert.NotNull(result);
-            Assert.Equal(2, result.Count); // Apenas 2 postagens estão ativas
+            Assert.Equal(2, result.Count);
         }
 
         [Fact]
         public async Task ObterPostagensAsync_DeveFiltrarPorTitulo()
         {
             // Act
-            var result = await _store.ObterPostagensAsync("Título A", null);
+            var result = await _store.ObterPostagensAsync("Título A", null, null, null);
 
             // Assert
             Assert.Single(result);
@@ -56,7 +54,7 @@ namespace Blog.Teste.QueryStore
         public async Task ObterPostagensAsync_DeveFiltrarPorAutor()
         {
             // Act
-            var result = await _store.ObterPostagensAsync(null, "Autor B");
+            var result = await _store.ObterPostagensAsync(null, "Autor B", null, null);
 
             // Assert
             Assert.Single(result);
@@ -67,7 +65,7 @@ namespace Blog.Teste.QueryStore
         public async Task ObterPostagensAsync_DeveRetornarVazioQuandoNaoEncontrarPostagens()
         {
             // Act
-            var result = await _store.ObterPostagensAsync("Título Z", "Autor Z");
+            var result = await _store.ObterPostagensAsync("Título Z", "Autor Z", null, null);
 
             // Assert
             Assert.NotNull(result);

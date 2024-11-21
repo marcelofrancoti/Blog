@@ -4,12 +4,9 @@ using Blog.Aplication.Postagens.Interface;
 using Blog.Aplication.Postagens.Request;
 using Blog.Contracts.Dto;
 using Blog.Contracts.Enum;
-using Blog.Intrastruture.Services.EntitiesService.BaseEntity;
-using Blog.Intrastruture.Services.IntegrationService;
 using Blog.Intrastruture.Services.Interface;
 using Microsoft.AspNetCore.SignalR;
 using Moq;
-using Xunit;
 
 namespace Blog.Teste.Handlers
 {
@@ -26,7 +23,7 @@ namespace Blog.Teste.Handlers
         {
             _hubContextMock = new Mock<IHubContext<PostagemHub>>();
             _hubClientsMock = new Mock<IHubClients>();
-
+            _postagemQueryStoreMock = new Mock<IPostagemQueryStore>();
             _usuarioQueryStoreMock = new Mock<IUsuarioQueryStore>();
             _postagemCommandStoreMock = new Mock<IPostagemCommandStore>();
             _handler = new ExcluirPostagemHandler(_postagemCommandStoreMock.Object, _usuarioQueryStoreMock.Object, _postagemQueryStoreMock.Object, _hubContextMock.Object);
@@ -62,14 +59,14 @@ namespace Blog.Teste.Handlers
 
             _postagemCommandStoreMock
                 .Setup(p => p.ExcluirPostagemAsync(request.IdPostagem))
-                .ReturnsAsync(false); // Simula falha na exclusão
+                .ReturnsAsync(false); 
 
             // Act
             var result = await _handler.Handle(request, CancellationToken.None);
 
             // Assert
             Assert.False(result.Success);
-            Assert.Equal("Erro ao excluir postagem.", result.Message);
+            Assert.Equal("Erro ao excluir postagem. Postagem Inexistente.", result.Message);
         }
 
         [Fact]
@@ -78,13 +75,44 @@ namespace Blog.Teste.Handlers
             // Arrange
             var request = new ExcluirPostagemRequest(1, 123);
 
+            var usuario = new UsuarioDto
+            {
+                Id = 123,
+                Nome = "Teste",
+                TipoUsuario = TipoUsuario.adm
+            };
+
+            var postagem = new PostagemDto
+            {
+                IdPostagem = 1,
+                IdUsuario = 123,
+                Titulo = "Título de Teste"
+            };
+
             _usuarioQueryStoreMock
                 .Setup(u => u.ObterUsuarioPorIdAsync(request.IdUsuario))
-                .ReturnsAsync(new UsuarioDto { Id = 1, Nome = "Teste", TipoUsuario = TipoUsuario.adm });
+                .ReturnsAsync(usuario);
+
+            _postagemQueryStoreMock
+                .Setup(p => p.ObterPostagemPorIdAsync(request.IdPostagem))
+                .ReturnsAsync(postagem); 
 
             _postagemCommandStoreMock
                 .Setup(p => p.ExcluirPostagemAsync(request.IdPostagem))
-                .ReturnsAsync(true); // Simula sucesso na exclusão
+                .ReturnsAsync(true); 
+
+            var clientProxyMock = new Mock<IClientProxy>();
+            clientProxyMock
+                .Setup(c => c.SendCoreAsync("ExcluindoPostagem", It.IsAny<object[]>(), default))
+                .Returns(Task.CompletedTask); 
+
+            _hubClientsMock
+                .Setup(c => c.All)
+                .Returns(clientProxyMock.Object); 
+
+            _hubContextMock
+                .Setup(h => h.Clients)
+                .Returns(_hubClientsMock.Object); 
 
             // Act
             var result = await _handler.Handle(request, CancellationToken.None);
@@ -92,6 +120,13 @@ namespace Blog.Teste.Handlers
             // Assert
             Assert.True(result.Success);
             Assert.Equal("Postagem excluída com sucesso.", result.Message);
+
+            _usuarioQueryStoreMock.Verify(u => u.ObterUsuarioPorIdAsync(request.IdUsuario), Times.Once);
+            _postagemQueryStoreMock.Verify(p => p.ObterPostagemPorIdAsync(request.IdPostagem), Times.Once);
+            _postagemCommandStoreMock.Verify(p => p.ExcluirPostagemAsync(request.IdPostagem), Times.Once);
+            clientProxyMock.Verify(c => c.SendCoreAsync("ExcluindoPostagem", It.Is<object[]>(o => o[0].ToString() == $"Postagem excluida: {postagem.Titulo}"), default), Times.Once);
         }
+
+
     }
 }

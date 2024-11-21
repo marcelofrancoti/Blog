@@ -2,10 +2,8 @@
 using Blog.Aplication.Usuario.Request;
 using Blog.Contracts.Dto;
 using Blog.Contracts.Enum;
-using Blog.Intrastruture.Services.EntitiesService.BaseEntity;
 using Blog.Intrastruture.Services.Interface;
 using Moq;
-using Xunit;
 
 namespace Blog.Teste.Handlers
 {
@@ -69,7 +67,7 @@ namespace Blog.Teste.Handlers
 
             _commandStoreMock
                 .Setup(c => c.CriarUsuarioAsync(It.IsAny<Domain.Entities.Usuario>()))
-                .ReturnsAsync(0); // Simula falha ao criar usuário
+                .ReturnsAsync(0); 
 
             // Act
             var result = await _handler.Handle(request, CancellationToken.None);
@@ -97,7 +95,7 @@ namespace Blog.Teste.Handlers
 
             _commandStoreMock
                 .Setup(c => c.CriarUsuarioAsync(It.IsAny<Domain.Entities.Usuario>()))
-                .ReturnsAsync(1); // Simula criação com sucesso
+                .ReturnsAsync(1); 
 
             // Act
             var result = await _handler.Handle(request, CancellationToken.None);

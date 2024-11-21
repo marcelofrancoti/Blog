@@ -2,9 +2,7 @@
 using Blog.Aplication.Postagens.Interface;
 using Blog.Aplication.Postagens.Request;
 using Blog.Contracts.Enum;
-using Blog.Domain.Entities;
 using Blog.Intrastruture.Services.EntitiesService.BaseEntity;
-using Blog.Intrastruture.Services.IntegrationService;
 using Blog.Intrastruture.Services.Interface;
 using MediatR;
 using Microsoft.AspNetCore.SignalR;
@@ -37,7 +35,7 @@ namespace Blog.Aplication.Postagens
 
             if (validaSeOpostDoUsuario == null )
             {
-                return new Response<string> { Success = false, Message = "Erro ao excluir postagem. Post Inesistente " };
+                return new Response<string> { Success = false, Message = "Erro ao excluir postagem. Postagem Inexistente." };
             }
 
             if (validaSeOpostDoUsuario.IdPostagem != request.IdPostagem || validaSeOpostDoUsuario.IdUsuario != request.IdUsuario)

@@ -2,7 +2,6 @@
 using Blog.Aplication.Postagens.Request;
 using Blog.Contracts.Dto;
 using Blog.Intrastruture.Services.EntitiesService;
-using Blog.Intrastruture.Services.EntitiesService.BaseEntity;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 

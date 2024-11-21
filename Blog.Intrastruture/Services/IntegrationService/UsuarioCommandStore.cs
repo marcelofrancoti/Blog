@@ -4,7 +4,7 @@ using Blog.Migrations;
 
 namespace Blog.Intrastruture.Services.IntegrationService
 {
-    public class UsuarioCommandStore: IUsuarioCommandStore
+    public class UsuarioCommandStore : IUsuarioCommandStore
     {
         private readonly BlogContext _context;
 
@@ -37,6 +37,19 @@ namespace Blog.Intrastruture.Services.IntegrationService
             if (usuario == null) return false;
 
             usuario.DataAlteracao = DateTime.UtcNow;
+            await _context.SaveChangesAsync();
+            return true;
+        }
+
+        public async Task<bool> AlterarUsuarioAsync(int IdUsuario, int TipoUsuario, string nome)
+        {
+            var usuario = await _context.Usuarios.FindAsync(IdUsuario);
+            if (usuario == null) return false;
+
+            usuario.TipoUsuario = TipoUsuario;
+            usuario.Nome = nome;
+            usuario.DataAlteracao = DateTime.UtcNow;
+
             await _context.SaveChangesAsync();
             return true;
         }

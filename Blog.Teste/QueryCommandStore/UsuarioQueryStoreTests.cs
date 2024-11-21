@@ -1,9 +1,7 @@
-﻿using Blog.Contracts.Dto;
-using Blog.Contracts.Enum;
+﻿using Blog.Contracts.Enum;
 using Blog.Intrastruture.Services.IntegrationService;
 using Blog.Migrations;
 using Microsoft.EntityFrameworkCore;
-using Xunit;
 
 namespace Blog.Teste.QueryStore
 {
@@ -15,7 +13,7 @@ namespace Blog.Teste.QueryStore
         public UsuarioQueryStoreTests()
         {
             var options = new DbContextOptionsBuilder<BlogContext>()
-                .UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString()) // Banco em memória
+                .UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString()) 
                 .Options;
 
             _context = new BlogContext(options);
@@ -155,7 +153,7 @@ namespace Blog.Teste.QueryStore
         public async Task ObterUsuarioPorIdAsync_DeveRetornarNuloQuandoIdNaoExistir()
         {
             // Act
-            var resultado = await _store.ObterUsuarioPorIdAsync(999); // ID inexistente
+            var resultado = await _store.ObterUsuarioPorIdAsync(999); 
 
             // Assert
             Assert.Null(resultado);

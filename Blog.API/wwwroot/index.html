@@ -32,7 +32,7 @@
 
     <script>
         const connection = new signalR.HubConnectionBuilder()
-            .withUrl("/hubs/postagem") // URL do seu hub
+            .withUrl("/hubs/postagem") 
             .build();
 
         connection.on("NovaPostagem", function (mensagem) {
