@@ -73,6 +73,7 @@ Banco de Dados:
 Usado para persistir e recuperar dados. Foi utilizado o Entity Framework com suporte a PostgreSQL.
 
 *4. Testes
+![image](https://github.com/user-attachments/assets/8dcb748b-3a9a-4d6f-9d79-c874146069cb)
 
 4.1 Cobertura de Testes
 Foram desenvolvidos testes unitários para as principais partes do sistema:
@@ -149,6 +150,9 @@ Integração com LINQ: A facilidade de usar LINQ para manipular dados torna o de
 
 
 *9.1. Migrations:
+
+![image](https://github.com/user-attachments/assets/686f26b6-c360-4e5b-adb8-084a445c446f)
+
 
 Gerenciamento de Alterações: As migrations documentam e aplicam alterações no banco de dados ao longo do tempo, garantindo a consistência entre o modelo de dados e o esquema do banco.
 Automação: Gera scripts SQL automaticamente com base nas alterações feitas no modelo, reduzindo erros manuais.
