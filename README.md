@@ -151,6 +151,9 @@ Integração com LINQ: A facilidade de usar LINQ para manipular dados torna o de
 
 *9.1. Migrations:
 
+![image](https://github.com/user-attachments/assets/686f26b6-c360-4e5b-adb8-084a445c446f)
+
+
 Gerenciamento de Alterações: As migrations documentam e aplicam alterações no banco de dados ao longo do tempo, garantindo a consistência entre o modelo de dados e o esquema do banco.
 Automação: Gera scripts SQL automaticamente com base nas alterações feitas no modelo, reduzindo erros manuais.
 Versões do Banco de Dados: Permite rastrear e reverter mudanças, útil para ambientes de desenvolvimento, teste e produção.
