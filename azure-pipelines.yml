@@ -1,0 +1,55 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main  # Branch que dispara o pipeline
+
+pool:
+  vmImage: 'ubuntu-latest'  # Máquina virtual usada para o pipeline
+
+variables:
+  buildConfiguration: 'Release'
+
+steps:
+# Passo 1: Instalar o SDK do .NET Core
+- task: UseDotNet@2
+  inputs:
+    packageType: 'sdk'
+    version: '8.0.x'  # Versão do .NET Core
+    installationPath: $(Agent.ToolsDirectory)/dotnet
+
+# Passo 2: Restaurar dependências
+- script: |
+    dotnet restore
+  displayName: 'Restaurar dependências'
+
+# Passo 3: Build do projeto
+- script: |
+    dotnet build --configuration $(buildConfiguration) --no-restore
+  displayName: 'Compilar aplicação'
+
+# Passo 4: Executar testes (opcional)
+- script: |
+    dotnet test --configuration $(buildConfiguration) --no-build --verbosity normal
+  displayName: 'Executar testes'
+
+# Passo 5: Publicar artefatos para deploy
+- script: |
+    dotnet publish -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory)
+  displayName: 'Publicar artefatos'
+
+# Passo 6: Publicar os artefatos no Azure DevOps (opcional)
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: '$(Build.ArtifactStagingDirectory)'
+    artifact: 'drop'
+    publishLocation: 'pipeline'
+
+- task: AzureWebApp@1
+  inputs:
+    azureSubscription: '<Nome-da-Conexão-Azure>'
+    appType: 'webApp'
+    appName: '<Nome-do-App-Service>'
+    package: '$(Build.ArtifactStagingDirectory)/*.zip'
