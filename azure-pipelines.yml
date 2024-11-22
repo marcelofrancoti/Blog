@@ -47,9 +47,3 @@ steps:
     artifact: 'drop'
     publishLocation: 'pipeline'
 
-- task: AzureWebApp@1
-  inputs:
-    azureSubscription: '<Nome-da-Conexão-Azure>'
-    appType: 'webApp'
-    appName: '<Nome-do-App-Service>'
-    package: '$(Build.ArtifactStagingDirectory)/*.zip'
